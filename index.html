@@ -3,95 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iron Lady Leadership Programs - AI Assistant</title>
+    <title>Iron Lady - AI Leadership Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="app-container">
+    <div class="chat-app">
+        <!-- Header -->
         <header class="chat-header">
             <div class="header-content">
-                <div class="header-info">
-                    <div class="bot-avatar">
-                        <div class="avatar-icon">👑</div>
-                    </div>
-                    <div>
-                        <h1 class="bot-name">Iron Lady Assistant</h1>
-                        <p class="bot-status">
-                            <span class="status-dot"></span>
-                            Online - Ready to help
-                        </p>
-                    </div>
+                <div class="logo-section">
+                    <h1 class="logo-title">
+                        <i class="fas fa-crown"></i>
+                        Iron Lady
+                    </h1>
+                    <p class="tagline">Empowering Women Leaders Worldwide</p>
                 </div>
-                <button class="clear-chat-btn" id="clearChatBtn" title="Clear Chat History">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                    </svg>
-                    Clear Chat
-                </button>
+                <div class="header-actions">
+                    <button class="btn btn-outline" id="clearChat">
+                        <i class="fas fa-refresh"></i>
+                        Clear Chat
+                    </button>
+                    <button class="btn btn-outline" id="exportChat">
+                        <i class="fas fa-download"></i>
+                        Export
+                    </button>
+                </div>
             </div>
         </header>
 
-        <div class="chat-container" id="chatContainer">
+        <!-- Chat Container -->
+        <div class="chat-container">
+            <!-- Messages Area -->
             <div class="messages-area" id="messagesArea">
                 <!-- Messages will be dynamically added here -->
             </div>
 
-            <div class="typing-indicator" id="typingIndicator">
-                <div class="typing-dots">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+            <!-- Typing Indicator -->
+            <div class="typing-indicator hidden" id="typingIndicator">
+                <div class="typing-avatar">
+                    <i class="fas fa-robot"></i>
                 </div>
-                <span class="typing-text">Iron Lady is typing...</span>
+                <div class="typing-content">
+                    <span>AI Assistant is typing</span>
+                    <div class="typing-dots">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions" id="quickActions">
+                <h3><i class="fas fa-lightning-bolt"></i> Quick Questions</h3>
+                <div class="quick-buttons">
+                    <button class="quick-btn" data-question="Tell me about Iron Lady programs">
+                        <i class="fas fa-graduation-cap"></i>
+                        Our Programs
+                    </button>
+                    <button class="quick-btn" data-question="Who are the mentors?">
+                        <i class="fas fa-users"></i>
+                        Meet Mentors
+                    </button>
+                    <button class="quick-btn" data-question="How much do programs cost?">
+                        <i class="fas fa-dollar-sign"></i>
+                        Pricing Info
+                    </button>
+                    <button class="quick-btn" data-question="How do I enroll?">
+                        <i class="fas fa-rocket"></i>
+                        Get Started
+                    </button>
+                    <button class="quick-btn" data-question="What certifications do you provide?">
+                        <i class="fas fa-certificate"></i>
+                        Certifications
+                    </button>
+                    <button class="quick-btn" data-question="Tell me success stories">
+                        <i class="fas fa-trophy"></i>
+                        Success Stories
+                    </button>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-area">
+                <div class="input-container">
+                    <div class="input-wrapper">
+                        <input 
+                            type="text" 
+                            id="messageInput" 
+                            class="message-input" 
+                            placeholder="Ask me anything about Iron Lady programs..."
+                            autocomplete="off"
+                        >
+                        <button class="input-action-btn" id="voiceBtn">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                    </div>
+                    <button class="send-btn" id="sendBtn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
             </div>
         </div>
 
-        <div class="quick-actions" id="quickActions">
-            <h3>Quick Questions</h3>
-            <div class="quick-buttons">
-                <button class="quick-btn" data-question="What programs does Iron Lady offer?">
-                    <span class="quick-icon">📚</span>
-                    <span>Programs</span>
-                </button>
-                <button class="quick-btn" data-question="What is the program duration?">
-                    <span class="quick-icon">⏰</span>
-                    <span>Duration</span>
-                </button>
-                <button class="quick-btn" data-question="Is the program online or offline?">
-                    <span class="quick-icon">💻</span>
-                    <span>Delivery</span>
-                </button>
-                <button class="quick-btn" data-question="Are certificates provided?">
-                    <span class="quick-icon">🏆</span>
-                    <span>Certificates</span>
-                </button>
-                <button class="quick-btn" data-question="Who are the mentors/coaches?">
-                    <span class="quick-icon">👥</span>
-                    <span>Mentors</span>
-                </button>
-                <button class="quick-btn" data-question="Where are offline programs held?">
-                    <span class="quick-icon">📍</span>
-                    <span>Location</span>
-                </button>
-            </div>
-        </div>
-
-        <div class="input-area">
-            <div class="input-container">
-                <input 
-                    type="text" 
-                    id="messageInput" 
-                    class="message-input" 
-                    placeholder="Ask me about Iron Lady's leadership programs..."
-                    autocomplete="off"
-                >
-                <button class="send-btn" id="sendBtn" disabled>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                        <polygon points="22,2 15,22 11,13 2,9"></polygon>
-                    </svg>
-                </button>
+        <!-- Export Modal -->
+        <div class="modal hidden" id="exportModal">
+            <div class="modal-overlay"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3><i class="fas fa-download"></i> Export Chat History</h3>
+                    <button class="modal-close" id="closeModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Choose your preferred export format:</p>
+                    <div class="export-options">
+                        <button class="btn btn-primary" id="exportTxt">
+                            <i class="fas fa-file-text"></i>
+                            Export as Text
+                        </button>
+                        <button class="btn btn-primary" id="exportJson">
+                            <i class="fas fa-code"></i>
+                            Export as JSON
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
